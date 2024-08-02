@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </header>
 
     <main>
-        <h2>Adicionar Aluno</h2>
+        <h2>Adicionar Filme</h2>
         <form method="POST">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
