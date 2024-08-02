@@ -12,8 +12,8 @@
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="php/index-aluno.php">Listar Filmes</a></li>
-                <li><a href="php/create-aluno.php">Adicionar Filme</a></li>
+                <li><a href="php/index-filme.php">Listar Filmes</a></li>
+                <li><a href="php/create-filme.php">Adicionar Filme</a></li>
             </ul>
         </nav>
     </header>
