@@ -1,0 +1,298 @@
+/* Estilos Globais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #28a745; /* Verde */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+}
+
+/* Navegação */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    transition: transform 0.2s;
+}
+
+nav ul li:hover {
+    transform: translateY(-3px);
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    color: #fff;
+    background-color: #218838; /* Verde mais escuro */
+}
+
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+form input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input:focus {
+    border-color: #28a745; /* Verde */
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+form button {
+    background-color: #28a745; /* Verde */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+form button:hover {
+    background-color: #218838; /* Verde mais escuro */
+    transform: scale(1.05);
+}
+
+/* Detalhes e Listagens */
+main {
+    padding: 25px;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+main h2 {
+    color: #28a745; /* Verde */
+    margin-bottom: 20px;
+    font-size: 2em;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 10px;
+}
+
+main p {
+    margin: 15px 0;
+    font-size: 1.1em;
+}
+
+main p strong {
+    font-weight: bold;
+}
+
+main a {
+    color: #28a745; /* Verde */
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+main a:hover {
+    text-decoration: underline;
+    color: #1e7e34; /* Verde mais escuro */
+}
+
+/* Rodapé */
+footer {
+    background-color: #28a745; /* Verde */
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+}
+
+
+
+/* Estilos para o controle de videogame */
+.controller {
+    width: 200px;
+    height: 150px;
+    background-color: #333;
+    border-radius: 15px;
+    position: relative;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Direcional (D-Pad) */
+.d-pad {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+}
+
+.d-pad div {
+    background-color: #555;
+    border-radius: 5px;
+    position: absolute;
+}
+
+.d-pad > div {
+    width: 20px;
+    height: 20px;
+}
+
+.d-pad .d-pad-up {
+    top: 0;
+    left: 20px;
+}
+
+.d-pad .d-pad-down {
+    bottom: 0;
+    left: 20px;
+}
+
+.d-pad .d-pad-left {
+    top: 20px;
+    left: 0;
+}
+
+.d-pad .d-pad-right {
+    top: 20px;
+    right: 0;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.button {
+    width: 30px;
+    height: 30px;
+    background-color: #555;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilizando os botões com cores diferentes */
+.button-a {
+    background-color: red;
+}
+
+.button-b {
+    background-color: blue;
+}
+
+.button-x {
+    background-color: green;
+}
+
+.button-y {
+    background-color: yellow;
+}
+
+.joystick {
+    width: 40px;
+    height: 40px;
+    background-color: #444;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joystick-inner {
+    width: 20px;
+    height: 20px;
+    background-color: #666;
+    border-radius: 50%;
+}
+
+
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.search-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
