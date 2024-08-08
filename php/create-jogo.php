@@ -2,23 +2,20 @@
 
 require_once 'db.php';
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
- 
     $nomejogo = $_POST['nomejogo'];
     $categoria = $_POST['categoria'];
-    $dataLancamento = $_POST['dataLancamento'];
+    $data_lancamento = $_POST['data_lancamento'];
     $preco = $_POST['preco'];
-    
 
-    $stmt = $pdo->prepare("INSERT INTO alunos (nomejogo, categoria, data_lancamento, preco) VALUES (?, ?, ?, ?)");
-
-    $stmt->execute([$nomejogo, $categoria, $dataLancamento, $preco]);
+    // Corrigir o nome da tabela para 'jogos'
+    $stmt = $pdo->prepare("INSERT INTO jogos (nomejogo, categoria, data_lancamento, preco) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$nomejogo, $categoria, $data_lancamento, $preco]);
 
     header('Location: index-jogo.php');
+    exit; // Adicionar exit para garantir que o script pare após o redirecionamento
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -42,18 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <main>
         <h2>Adicionar Jogo</h2>
      
-        <form id="jogoForm" method="POST">
+        <form id="jogoForm" method="POST" action="">
             <label for="nomejogo">Nome do Jogo:</label>
-            <input type="text" id="nome" name="nome" placeholder="Ex: Minecraft" required>
+            <input type="text" id="nomejogo" name="nomejogo" placeholder="Ex: Minecraft" required>
             <small id="nomeError" class="error"></small>
             
             <label for="categoria">Categoria:</label>
             <input type="text" id="categoria" name="categoria" placeholder="Ex: Ação" required>
             <small id="categoriaError" class="error"></small>
             
-            <label for="dataLancamento">Data de Lançamento:</label>
-            <input type="date" id="dataLancamento" name="dataLancamento" required>
-            <small id="dataLancamentoError" class="error"></small>
+            <label for="data_lancamento">Data de Lançamento:</label>
+            <input type="date" id="data_lancamento" name="data_lancamento" required>
             
             <label for="preco">Preço:</label>
             <input type="number" id="preco" name="preco" step="0.01" min="0" placeholder="0.00" required>
@@ -77,18 +73,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             document.querySelectorAll('.error').forEach(error => error.textContent = '');
 
-            if (nome.length < 3) {
+            if (nomejogo.length < 3) {
                 document.getElementById('nomeError').textContent = 'O nome deve ter pelo menos 3 caracteres.';
                 hasError = true;
             }
 
-            
-
-            if (!/^\d+(\.\d{1,2})?$/.test(preco)) {
-                document.getElementById('precoError').textContent = 'Por favor, insira um preço válido.';
+            if (categoria.length === 0) {
+                document.getElementById('categoriaError').textContent = 'A categoria é obrigatória.';
                 hasError = true;
             }
 
+            if (preco.length > 0 && !/^\d+(\.\d{1,2})?$/.test(preco)) {
+                document.getElementById('precoError').textContent = 'Por favor, insira um preço válido.';
+                hasError = true;
+            }
 
             if (hasError) {
                 event.preventDefault();

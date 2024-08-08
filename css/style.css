@@ -1,16 +1,15 @@
-/* Estilos Globais */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #eef2f7;
+    background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
 }
 
-/* Cabeçalho */
+
 header {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745; 
     color: white;
     padding: 20px;
     text-align: center;
@@ -23,7 +22,7 @@ header h1 {
     letter-spacing: 1px;
 }
 
-/* Navegação */
+
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -52,7 +51,7 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #fff;
-    background-color: #218838; /* Verde mais escuro */
+    background-color: #218838; 
 }
 
 /* Formulários */
@@ -62,13 +61,7 @@ form {
     gap: 15px;
 }
 
-form label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 1.1em;
-}
-
-form input {
+form input[type="text"] {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -76,13 +69,13 @@ form input {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-form input:focus {
-    border-color: #28a745; /* Verde */
+form input[type="text"]:focus {
+    border-color: #28a745;
     box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
 }
 
 form button {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745; 
     color: white;
     padding: 12px;
     border: none;
@@ -93,14 +86,14 @@ form button {
 }
 
 form button:hover {
-    background-color: #218838; /* Verde mais escuro */
+    background-color: #218838; 
     transform: scale(1.05);
 }
 
-/* Detalhes e Listagens */
+
 main {
     padding: 25px;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 40px auto;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -108,38 +101,55 @@ main {
 }
 
 main h2 {
-    color: #28a745; /* Verde */
+    color: #28a745; 
     margin-bottom: 20px;
     font-size: 2em;
     border-bottom: 2px solid #28a745;
     padding-bottom: 10px;
 }
 
-main p {
-    margin: 15px 0;
-    font-size: 1.1em;
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
 }
 
-main p strong {
-    font-weight: bold;
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
 }
 
-main a {
-    color: #28a745; /* Verde */
+table th {
+    background-color: #28a745; 
+    color: white;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+table a {
+    color: #28a745; 
     text-decoration: none;
     font-weight: bold;
-    margin-right: 20px;
-    transition: color 0.3s, text-decoration 0.3s;
+    margin-right: 10px;
+    transition: color 0.3s;
 }
 
-main a:hover {
-    text-decoration: underline;
-    color: #1e7e34; /* Verde mais escuro */
+table a:hover {
+    color: #1e7e34; 
 }
 
 /* Rodapé */
 footer {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745; 
     color: white;
     text-align: center;
     padding: 15px;
@@ -154,9 +164,37 @@ footer p {
     font-size: 1em;
 }
 
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.search-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
 
 
-/* Estilos para o controle de videogame */
+
 .controller {
     width: 200px;
     height: 150px;
@@ -168,7 +206,7 @@ footer p {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Direcional (D-Pad) */
+
 .d-pad {
     display: flex;
     flex-wrap: wrap;
@@ -230,7 +268,7 @@ footer p {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Estilizando os botões com cores diferentes */
+
 .button-a {
     background-color: red;
 }
@@ -265,34 +303,4 @@ footer p {
     height: 20px;
     background-color: #666;
     border-radius: 50%;
-}
-
-
-.search-container {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.search-container input[type="text"] {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 300px;
-    margin-right: 10px;
-}
-
-.search-container button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-.search-container button:hover {
-    background-color: #0056b3;
 }
