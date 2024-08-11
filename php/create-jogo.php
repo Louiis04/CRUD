@@ -8,12 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data_lancamento = $_POST['data_lancamento'];
     $preco = $_POST['preco'];
 
-    // Corrigir o nome da tabela para 'jogos'
     $stmt = $pdo->prepare("INSERT INTO jogos (nomejogo, categoria, data_lancamento, preco) VALUES (?, ?, ?, ?)");
     $stmt->execute([$nomejogo, $categoria, $data_lancamento, $preco]);
 
     header('Location: index-jogo.php');
-    exit; // Adicionar exit para garantir que o script pare após o redirecionamento
 }
 ?>
 <!DOCTYPE html>
