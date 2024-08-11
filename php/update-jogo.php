@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <main>
         <h2>Editar Jogo</h2>
-        <form method="POST">
+        <form id="jogoForm" method="POST">
             <label for="nomejogo">Nome do Jogo:</label>
             <input type="text" id="nomejogo" name="nomejogo" placeholder="God Of War" value="<?= $jogo['nomejogo'] ?>" required>
             <small id="nomeError" class="error"></small>
@@ -54,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="text" id="categoria" name="categoria" placeholder="Ação" value="<?= $jogo['categoria'] ?>" required>
             <small id="categoriaError" class="error"></small>
             
-            <label for="dataLancamento">Data de Lançamento:</label>
-            <input type="date" id="dataLancamento" name="dataLancamento" value="<?= $jogo['data_lancamento'] ?>" required>
+            <label for="data_lancamento">Data de Lançamento:</label>
+            <input type="date" id="data_lancamento" name="data_lancamento" value="<?= $jogo['data_lancamento'] ?>" required>
             <small id="erroData" class="error"></small>
             
             <label for="preco">Preço:</label>
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             let nomejogo = document.getElementById('nomejogo').value.trim();
             let categoria = document.getElementById('categoria').value.trim();
             let preco = document.getElementById('preco').value.trim();
-            let dataLancamento = new Date(document.getElementById('dataLancamento').value);
+            let dataLancamento = new Date(document.getElementById('data_lancamento').value);
             let dataMinima = new Date('1940-01-01');
 
             let hasError = false;
@@ -96,13 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 document.getElementById('precoError').textContent = 'Por favor, insira um preço válido.';
                 hasError = true;
             }
-            
+
             if (dataLancamento < dataMinima) {
-            event.preventDefault();
-            document.getElementById('erroData').style.display = 'inline';
-            } 
-            else {
-            document.getElementById('erroData').style.display = 'none';
+                document.getElementById('erroData').textContent = 'A data deve ser posterior a 01/01/1940.';
+                hasError = true;
             }
 
             if (hasError) {

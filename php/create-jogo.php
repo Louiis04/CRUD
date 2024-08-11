@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header('Location: index-jogo.php');
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -67,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             let nomejogo = document.getElementById('nomejogo').value.trim();
             let categoria = document.getElementById('categoria').value.trim();
             let preco = document.getElementById('preco').value.trim();
-            let dataLancamento = new Date(document.getElementById('dataLancamento').value);
+            let dataLancamento = new Date(document.getElementById('data_lancamento').value);
             let dataMinima = new Date('1940-01-01');
 
             let hasError = false;
@@ -88,12 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 document.getElementById('precoError').textContent = 'Por favor, insira um preço válido.';
                 hasError = true;
             }
+
             if (dataLancamento < dataMinima) {
-            document.getElementById('erroData').textContent = 'A data deve ser entre 01/01/1940 e 01/01/1950.';
-            hasError = true;
-        } else {
-            document.getElementById('erroData').textContent = '';
-        }
+                document.getElementById('erroData').textContent = 'A data deve ser posterior a 01/01/1940.';
+                hasError = true;
+            }
 
             if (hasError) {
                 event.preventDefault();
