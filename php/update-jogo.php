@@ -15,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $dataLancamento = $_POST['dataLancamento'];
     $preco = $_POST['preco'];
     
-    $stmt = $pdo->prepare("UPDATE jogos SET nome = ?, categoria = ?, data_lancamento = ?, preco = ? WHERE id = ?");
+    $stmt = $pdo->prepare("UPDATE jogos SET nomejogo = ?, categoria = ?, data_lancamento = ?, preco = ? WHERE id = ?");
     
-    $stmt->execute([$nomejogo, $categoria, $dataNascimento, $preco, $id]);
+    $stmt->execute([$nomejogo, $categoria, $dataLancamento, $preco, $id]);
     
     header('Location: index-jogo.php');
 }
@@ -48,15 +48,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <form method="POST">
             <label for="nomejogo">Nome do Jogo:</label>
             <input type="text" id="nomejogo" name="nomejogo" placeholder="God Of War" value="<?= $jogo['nomejogo'] ?>" required>
+            <small id="nomeError" class="error"></small>
             
             <label for="categoria">Categoria:</label>
             <input type="text" id="categoria" name="categoria" placeholder="Ação" value="<?= $jogo['categoria'] ?>" required>
+            <small id="categoriaError" class="error"></small>
             
             <label for="dataLancamento">Data de Lançamento:</label>
             <input type="date" id="dataLancamento" name="dataLancamento" value="<?= $jogo['data_lancamento'] ?>" required>
+            <small id="erroData" class="error"></small>
             
             <label for="preco">Preço:</label>
-            <<input type="number" id="preco" name="preco" step="0.01" min="0" placeholder="0.00" value="<?= $jogo['preco'] ?>" required>
+            <input type="number" id="preco" name="preco" step="0.01" min="0" placeholder="0.00" value="<?= $jogo['preco'] ?>" required>
+            <small id="precoError" class="error"></small>
             
             <button type="submit">Atualizar</button>
         </form>
@@ -65,5 +69,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <footer>
         <p>&copy; 2024 - Sistema de Gerenciamento de Jogos</p>
     </footer>
+
+    <script>
+        document.getElementById('jogoForm').addEventListener('submit', function(event) {
+            let nomejogo = document.getElementById('nomejogo').value.trim();
+            let categoria = document.getElementById('categoria').value.trim();
+            let preco = document.getElementById('preco').value.trim();
+            let dataLancamento = new Date(document.getElementById('dataLancamento').value);
+            let dataMinima = new Date('1940-01-01');
+
+            let hasError = false;
+
+            document.querySelectorAll('.error').forEach(error => error.textContent = '');
+
+            if (nomejogo.length < 3) {
+                document.getElementById('nomeError').textContent = 'O nome deve ter pelo menos 3 caracteres.';
+                hasError = true;
+            }
+
+            if (categoria.length === 0) {
+                document.getElementById('categoriaError').textContent = 'A categoria é obrigatória.';
+                hasError = true;
+            }
+
+            if (preco.length > 0 && !/^\d+(\.\d{1,2})?$/.test(preco)) {
+                document.getElementById('precoError').textContent = 'Por favor, insira um preço válido.';
+                hasError = true;
+            }
+            
+            if (dataLancamento < dataMinima) {
+            event.preventDefault();
+            document.getElementById('erroData').style.display = 'inline';
+            } 
+            else {
+            document.getElementById('erroData').style.display = 'none';
+            }
+
+            if (hasError) {
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

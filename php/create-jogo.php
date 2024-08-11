@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             <label for="data_lancamento">Data de Lançamento:</label>
             <input type="date" id="data_lancamento" name="data_lancamento" required>
+            <small id="erroData" class="error"></small>
             
             <label for="preco">Preço:</label>
             <input type="number" id="preco" name="preco" step="0.01" min="0" placeholder="0.00" required>
@@ -68,6 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             let nomejogo = document.getElementById('nomejogo').value.trim();
             let categoria = document.getElementById('categoria').value.trim();
             let preco = document.getElementById('preco').value.trim();
+            let dataLancamento = new Date(document.getElementById('dataLancamento').value);
+            let dataMinima = new Date('1940-01-01');
 
             let hasError = false;
 
@@ -87,6 +90,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 document.getElementById('precoError').textContent = 'Por favor, insira um preço válido.';
                 hasError = true;
             }
+            if (dataLancamento < dataMinima) {
+            document.getElementById('erroData').textContent = 'A data deve ser entre 01/01/1940 e 01/01/1950.';
+            hasError = true;
+        } else {
+            document.getElementById('erroData').textContent = '';
+        }
 
             if (hasError) {
                 event.preventDefault();
