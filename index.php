@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -12,8 +15,14 @@
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
+                <?php if (isset($_SESSION['user_id'])): ?>
                 <li><a href="php/index-jogo.php">Listar Jogos</a></li>
                 <li><a href="php/create-jogo.php">Adicionar Jogo</a></li>
+                <li><a href="php/logout.php">Logout (<?= $_SESSION['username'] ?>)</a></li>
+                <?php else: ?>
+                    <li><a href="php/user-login.php">Login</a></li>
+                    <li><a href="php/user-register.php">Registrar</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>

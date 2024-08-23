@@ -1,6 +1,7 @@
 <?php
 
 require_once 'db.php';
+require_once 'authenticate.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nomejogo = $_POST['nomejogo'];

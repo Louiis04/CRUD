@@ -1,5 +1,6 @@
 <?php
 require_once 'db.php';
+require_once 'authenticate.php';
 
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $sql = "SELECT * FROM jogos WHERE nomejogo LIKE :searchTerm";
